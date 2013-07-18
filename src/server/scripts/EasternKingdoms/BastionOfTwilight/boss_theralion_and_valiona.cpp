@@ -40,17 +40,20 @@ public:
         InstanceScript* instance;
 
         void Reset()
-        {
+        {	
+			if (instance)
             instance->SetData(DATA_THERALION_ANA_VALIONA, NOT_STARTED);
         }
 
         void EnterCombat(Unit* /*who*/)
         {
+			if (instance)
             instance->SetData(DATA_THERALION_ANA_VALIONA, IN_PROGRESS);
         }
 
         void JustDied(Unit* /*Killer*/)
         {
+			if (instance)
             instance->SetData(DATA_THERALION_ANA_VALIONA, DONE);
         }
 
