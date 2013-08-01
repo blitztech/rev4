@@ -1184,7 +1184,7 @@ class spell_sha_unleash_elements : public SpellScriptLoader
                     return true;
                 }
      
-                void HandleDummy(SpellEffIndex /*effIndex*/) const OVERRIDE
+                void HandleDummy(SpellEffIndex /*effIndex*/) 
                 {
                     Unit* caster = GetCaster();
                     if (!caster)
