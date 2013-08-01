@@ -62,11 +62,7 @@ enum ShamanSpells
     SPELL_SHAMAN_TOTEM_EARTHBIND_TOTEM          = 6474,
     SPELL_SHAMAN_TOTEM_EARTHEN_POWER            = 59566,
     SPELL_SHAMAN_TOTEM_HEALING_STREAM_HEAL      = 52042,
-<<<<<<< HEAD
 	SPELL_SHAMAN_UNLEASH_ELEMENTS				= 73680,	
-=======
-+	SPELL_SHAMAN_UNLEASH_ELEMENTS				= 73680,	
->>>>>>> 25906ffdc2ba9329220746040e80dc5d9d4d6b27
     SPELL_SHAMAN_TIDAL_WAVES                    = 53390
 	
 };
@@ -1181,14 +1177,14 @@ class spell_sha_unleash_elements : public SpellScriptLoader
             {
                 PrepareSpellScript(spell_sha_unleash_elements_SpellScript);
      
-                bool Validate(SpellInfo const * /*spellInfo*/)
+                bool Validate(SpellInfo const * /*spellInfo*/) OVERRIDE
                 {
                     if (!sSpellMgr->GetSpellInfo(SPELL_SHAMAN_UNLEASH_ELEMENTS))
                         return false;
                     return true;
                 }
      
-                void HandleDummy(SpellEffIndex /*effIndex*/)
+                void HandleDummy(SpellEffIndex /*effIndex*/) const OVERRIDE
                 {
                     Unit* caster = GetCaster();
                     if (!caster)
@@ -1233,13 +1229,13 @@ class spell_sha_unleash_elements : public SpellScriptLoader
                     }
                 }
      
-                void Register()
+                void Register() OVERRIDE
                 {
-                    OnEffectHitTarget += SpellEffectFn(spell_sha_unleash_elements_SpellScript::HandleDummy, EFFECT_0, SPELL_EFFECT_DUMMY);
+                    OnEffectHitTarget += SpellEffectFn(spell_sha_unleash_elements_SpellScript::HandleDummy, EFFECT_0, SPELL_EFFECT_DUMMY); 
                 }
             };
      
-            SpellScript* GetSpellScript() const
+            SpellScript* GetSpellScript() const OVERRIDE
             {
                 return new spell_sha_unleash_elements_SpellScript();
             }
